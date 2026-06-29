@@ -20,3 +20,7 @@
   height: 4px;
   background: blue !important;
 }
+
+* {
+  font-family: 'Inter', sans-serif;
+}
