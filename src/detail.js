@@ -1,5 +1,11 @@
 import "./style.css";
+import "preline";
 import { supabase } from "./supabase.js";
+
+
+window.addEventListener("load", () => {
+  window.HSStaticMethods?.autoInit();
+});
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");

@@ -1,5 +1,11 @@
 import "./style.css";
+import "preline";
 import { supabase } from "./supabase.js";
+
+
+window.addEventListener("load", () => {
+  window.HSStaticMethods?.autoInit();
+});
 
 const toyGrid = document.getElementById("toy-grid");
 console.log("listing.js loaded");
