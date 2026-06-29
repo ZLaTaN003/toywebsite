@@ -71,7 +71,7 @@ async function loadToys(limit = null) {
 }
 
 // load top 5 for detail page
-if (window.location.pathname.endsWith("index.html")) {
+if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
   loadToys(5);
 }
 if (window.location.pathname.endsWith("listing.html")) {
