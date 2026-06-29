@@ -1,3 +1,4 @@
+import "./style.css";
 import { supabase } from "./supabase.js";
 
 const params = new URLSearchParams(window.location.search);
