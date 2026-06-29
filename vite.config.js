@@ -1,13 +1,7 @@
 import { defineConfig } from "vite";
-import { resolve } from "path";
+import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
-  build: {
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, "index.html"),
-        detail: resolve(__dirname, "pages/detail.html"),
-      },
-    },
-  },
+  plugins: [tailwindcss()],
+  appType: "mpa",
 });
