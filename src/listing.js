@@ -1,14 +1,11 @@
 import "./style.css";
-import "preline";
 import { supabase } from "./supabase.js";
-
-
-window.addEventListener("load", () => {
-  window.HSStaticMethods?.autoInit();
-});
+import { addToCart } from "./cart.js";
 
 const toyGrid = document.getElementById("toy-grid");
 console.log("listing.js loaded");
+
+let toysById = {};
 
 async function loadToys(limit = null) {
   let { data, error } = await supabase
@@ -29,6 +26,8 @@ async function loadToys(limit = null) {
   toyGrid.innerHTML = "";
 
   data.forEach((toy) => {
+    toysById[toy.id] = toy;
+
     toyGrid.innerHTML += `
       <div class="group flex flex-col">
         <div class="relative">
@@ -61,13 +60,28 @@ async function loadToys(limit = null) {
              class="after:absolute after:inset-0"></a>
         </div>
 
-        <div class="mt-auto pt-4">
+        <div class="mt-auto pt-4 flex gap-2">
           <a
             href="detail.html?id=${toy.id}"
-            class="py-2 px-3 w-full inline-flex justify-center items-center rounded-xl bg-primary text-white"
+            class="py-2 px-3 flex-1 inline-flex justify-center items-center rounded-xl border border-line text-foreground hover:bg-blue-50 transition"
           >
             View Details
           </a>
+
+          <button
+            type="button"
+            class="add-to-cart-btn py-2 px-3 flex-1 inline-flex justify-center gap-2 items-center rounded-xl border border-line text-foreground hover:bg-blue-50 transition disabled:pointer-events-none "
+            data-id="${toy.id}"
+            
+          >
+            <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+
+            Add to Cart
+          </button>
         </div>
       </div>
     `;
@@ -76,11 +90,34 @@ async function loadToys(limit = null) {
   console.log("Toys loaded:", data);
 }
 
+toyGrid.addEventListener("click", (e) => {
+  const btn = e.target.closest(".add-to-cart-btn");
+  if (!btn) return;
+
+  const toy = toysById[btn.dataset.id];
+  if (!toy) return;
+
+  addToCart({
+    id: toy.id,
+    productname: toy.productname,
+    price: toy.price,
+    toyimage: toy.toyimage,
+  });
+
+  const originalText = btn.textContent;
+  btn.textContent = "Added ✓";
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = originalText;
+    btn.disabled = false;
+  }, 1200);
+});
+
 // load top 5 for detail page
 if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
   loadToys(5);
 }
 if (window.location.pathname.endsWith("listing.html")) {
     loadToys();
-    
+
 }

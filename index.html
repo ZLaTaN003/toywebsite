@@ -1,11 +1,13 @@
 <!doctype html>
 <html lang="en">
+  
   <head>
-    <!-- Required Meta Tags Always Come First -->
+     <meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Title -->
     <title>
-      Toy Shop
+      Zilwo - Premium Action Figures and Collectibles
     </title>
 
     <!-- Favicon -->
@@ -40,12 +42,8 @@
           html.classList.add("light");
       })();
     </script>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 
-    <!-- CSS HS -->
-    <link
-      rel="stylesheet"
-      href="https://preline.co/assets/css/main.css?v=3.0.1"
-    />
   </head>
 
   <body class="bg-background">
@@ -82,30 +80,30 @@
                   d="M6 6h.008v.008H6V6Z"
                 />
               </svg>
-              ToyShop
+              Zilwo
             </div>
           </a>
           <!-- End Logo -->
         </div>
 
         <!-- Button Group -->
+
         <div
           class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3"
         >
-        
 
           <div class="lg:hidden">
             <button
               type="button"
-              class="hs-collapse-toggle size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl bg-layer border border-layer-line text-layer-foreground hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
-              id="hs-pro-hcail-collapse"
+              id="mobile-menu-toggle"
+              class="size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl bg-layer border border-layer-line text-layer-foreground hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
               aria-expanded="false"
-              aria-controls="hs-pro-hcail"
+              aria-controls="mobile-menu"
               aria-label="Toggle navigation"
-              data-hs-collapse="#hs-pro-hcail"
             >
               <svg
-                class="hs-collapse-open:hidden shrink-0 size-4"
+                id="menu-icon-open"
+                class="shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -121,7 +119,8 @@
                 <line x1="3" x2="21" y1="18" y2="18" />
               </svg>
               <svg
-                class="hs-collapse-open:block hidden shrink-0 size-4"
+                id="menu-icon-close"
+                class="hidden shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
                 height="24"
@@ -137,15 +136,38 @@
               </svg>
             </button>
           </div>
+
+
+          <div class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3">
+
+           <a
+          href="/cart.html"
+          class="size-9.5 relative flex justify-center items-center rounded-xl bg-layer border border-layer-line text-layer-foreground hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus"
+        >
+          <span class="sr-only">Cart</span>
+          <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="8" cy="21" r="1" />
+            <circle cx="19" cy="21" r="1" />
+            <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          </svg>
+          <span
+            data-cart-count
+            class="flex hidden absolute -top-1.5 -right-1.5 min-w-5 h-5 px-1 items-center justify-center rounded-full bg-blue-600 text-white text-xs font-semibold"
+          >0</span>
+        </a>
+
+          </div>
         </div>
+
+
+
         <!-- End Button Group -->
+
 
         <!-- Collapse -->
         <div
-          id="hs-pro-hcail"
-          class="hs-collapse hidden overflow-hidden transition-all duration-300 basis-full grow lg:block lg:w-auto lg:basis-auto lg:order-2 lg:col-span-6"
-          aria-labelledby="hs-pro-hcail-collapse"
-          role="region"
+          id="mobile-menu"
+          class="hidden overflow-hidden transition-all duration-300 basis-full grow lg:block! lg:w-auto lg:basis-auto lg:order-2 lg:col-span-6"
         >
           <div
             class="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0"
@@ -154,9 +176,13 @@
 
             <a class="nav-link" href="/listing.html">Listings</a>
           </div>
-          
+
+
         </div>
+
         <!-- End Collapse -->
+
+
       </nav>
     </header>
     <!-- ========== END HEADER ========== -->
@@ -164,27 +190,60 @@
     <!-- ========== MAIN CONTENT ========== -->
     <main id="content">
       <!-- Hero -->
-    <div class="px-4 sm:px-6 lg:px-8">
-  <div
-    class="h-120 md:h-[80dvh] flex flex-col bg-cover bg-center bg-no-repeat rounded-2xl"
-    style="
-      background-image: url('https://images.unsplash.com/photo-1741512612523-d6b9b7cdd18b?w=2000&auto=format&fit=crop&q=80');
-    "
+<!-- Hero -->
+<div class="px-4 sm:px-6 lg:px-8">
+  <section
+    class="relative h-[60vh] md:h-[70vh] overflow-hidden rounded-2xl"
   >
-    <div class="mt-auto w-2/3 md:max-w-lg ps-5 pb-5 md:ps-10 md:pb-10">
-      <h1 class="text-xl md:text-3xl lg:text-5xl text-foreground-inverse" style="text-shadow: 2px 2px 4px black;">
-        Something Fun for Everyone
-      </h1>
+    <!-- Background Image -->
+    <img
+      src="https://images.pexels.com/photos/38033784/pexels-photo-38033784.jpeg"
+      alt="Premium action figures"
+      class="absolute inset-0 h-full w-full object-cover"
+    />
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/55"></div>
+
+    <!-- Content -->
+    <div
+      class="relative z-10 flex h-full items-center max-w-7xl mx-auto px-6 lg:px-12"
+    >
+      <div class="max-w-xl">
+       
+
+        <h1
+          class="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight"
+        >
+          Discover Authentic Action Figures & Collectibles
+        </h1>
+
+        <p class="mt-6 text-lg text-gray-200 leading-relaxed">
+          Carefully selected premium collectibles with exceptional quality,
+          attention to detail, and authenticity.
+        </p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a
+            href="/listing.html"
+            class="px-6 py-3 rounded-xl bg-white text-black font-semibold hover:bg-gray-100 transition"
+          >
+            Shop Now
+          </a>
+
+       
+        </div>
+      </div>
     </div>
-  </div>
+  </section>
 </div>
-      <!-- End Hero -->
+<!-- End Hero -->
 
       <!-- Listing -->
       <div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
         <div class="mb-6 sm:mb-10 max-w-2xl text-center mx-auto">
           <h1 class="font-medium text-foreground text-3xl sm:text-4xl">
-            New this season
+            New items in our collection
           </h1>
         </div>
 
@@ -197,7 +256,7 @@
 
         <div class="mt-10 lg:mt-20 text-center">
           <a
-            class="relative inline-block font-medium md:text-lg text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-secondary-hover focus:outline-hidden focus:before:bg-secondary-focus"
+            class="active relative inline-block font-medium md:text-lg text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-secondary-hover focus:outline-hidden focus:before:bg-secondary-focus"
             href="/listing.html"
           >
             View all Products
@@ -205,6 +264,92 @@
         </div>
       </div>
       <!-- End Listing -->
+       <!-- Why Choose Us -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 lg:py-16">
+  <div class="text-center max-w-2xl mx-auto">
+    <span
+      class="inline-flex items-center rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary"
+    >
+      Why Choose Zilwo
+    </span>
+    <h2 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight text-foreground">
+      Collect With Confidence
+    </h2>
+    <p class="mt-4 text-muted-foreground">
+      We bring authentic premium action figures and collectibles to fans
+      across India with a focus on quality, trust, and customer satisfaction.
+    </p>
+  </div>
+
+  <div class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+    <!-- Card -->
+    <div class="rounded-3xl border border-line bg-surface p-8 hover:bg-layer transition">
+      <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+        <svg class="shrink-0 size-5 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-foreground">
+        Authentic Products
+      </h3>
+      <p class="mt-3 text-sm text-muted-foreground leading-6">
+        Every collectible is carefully selected for quality, authenticity,
+        and attention to detail.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-3xl border border-line bg-surface p-8 hover:bg-layer transition">
+      <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+        <svg class="shrink-0 size-5 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M10 17h4V5H2v12h3" />
+          <path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1" />
+          <circle cx="7.5" cy="17.5" r="2.5" />
+          <circle cx="17.5" cy="17.5" r="2.5" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-foreground">
+        Shipping Across India
+      </h3>
+      <p class="mt-3 text-sm text-muted-foreground leading-6">
+        Secure packaging and reliable delivery so your collectibles arrive
+        safely.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-3xl border border-line bg-surface p-8 hover:bg-layer transition">
+      <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+          <svg class="shrink-0 size-5 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.57 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.49-8.43ZM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.37l-.36-.21-3.72.97.99-3.63-.24-.37a9.88 9.88 0 1 1 8.37 4.61Zm5.42-7.39c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.08-.12-.27-.2-.57-.35Z"/>
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-foreground">
+        WhatsApp Ordering
+      </h3>
+      <p class="mt-3 text-sm text-muted-foreground leading-6">
+        Place your order quickly and easily through WhatsApp with direct
+        assistance.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="rounded-3xl border border-line bg-surface p-8 hover:bg-layer transition">
+      <div class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+        <svg class="shrink-0 size-5 text-primary" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
+        </svg>
+      </div>
+      <h3 class="text-lg font-semibold text-foreground">
+        GST &amp; Trademark Registered
+      </h3>
+      <p class="mt-3 text-sm text-muted-foreground leading-6">
+        Shop with confidence from a registered business committed to trust
+        and transparency.
+      </p>
+    </div>
+  </div>
+</section>
 
       <!-- Testimonials -->
       <div
@@ -229,10 +374,7 @@
                 <p
                   class="text-xl sm:text-2xl lg:text-3xl lg:leading-normal text-foreground"
                 >
-                  We believe the best memories begin with play. From educational
-                  games to cuddly companions, every toy in our collection is
-                  carefully chosen to bring joy, spark imagination, and create
-                  moments children will remember.
+                  Zilwo was founded to make premium action figures and collectibles available to fans everywhere. We focus on offering products that are carefully selected for their quality, attention to detail, and authenticity, so every collector can buy with confidence
                 </p>
 
                 <footer class="mt-6 md:mt-10">
@@ -261,6 +403,7 @@
                         />
                       </svg>
                     </span>
+                    
                     Browse Our Collection
                   </a>
                 </footer>
@@ -358,10 +501,10 @@
                     <p class="text-sm text-muted-foreground-2">Email us</p>
                     <p>
                       <a
-                        class="relative inline-block font-medium text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
-                        href="mailto:example@site.so"
+                        class="active relative inline-block font-medium text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
+                        href="mailto:info@zilwo.in"
                       >
-                        hello@example.so
+                        info@zilwo.in
                       </a>
                     </p>
                   </div>
@@ -389,11 +532,12 @@
                     <p class="text-sm text-muted-foreground-2">Call us</p>
                     <p>
                       <a
-                        class="relative inline-block font-medium text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
-                        href="mailto:example@site.so"
+                        class="active relative inline-block font-medium text-foreground before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
+                        href="tel:+918015443879"
                       >
-                        +44 222 777-000
+                        +91 8015443879
                       </a>
+                     
                     </p>
                   </div>
                 </div>
@@ -409,71 +553,169 @@
     <!-- ========== END MAIN CONTENT ========== -->
 
     <!-- ========== FOOTER ========== -->
-    <footer class="mt-auto border-t md:border-t-0 border-line-2">
-      <div class="w-full max-w-7xl py-10 md:pt-0 px-4 sm:px-6 lg:px-8 mx-auto">
-        <div class="flex justify-between">
-          <div class="text-center md:text-start">
-            <!-- Logo -->
+     <footer class="border-t border-line-2 mt-16">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          <!-- Brand -->
+          <div>
             <a
-              class="flex-none rounded-xl text-xl inline-block font-semibold focus:outline-hidden focus:opacity-80"
-              href="index.html"
+              href="/index.html"
+              class="flex items-center gap-2 text-xl font-semibold"
             >
-              <div class="flex gap-2">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 6h.008v.008H6V6Z"
+                />
+              </svg>
+
+              Zilwo
+            </a>
+
+            <p class="mt-4 text-sm text-muted-foreground-2 leading-6">
+              Premium action figures and collectibles carefully selected for
+              quality, attention to detail and authenticity.
+            </p>
+          </div>
+
+          <!-- Quick Links -->
+          <div>
+            <h3 class="font-semibold mb-4">Quick Links</h3>
+
+            <ul class="space-y-3 text-sm">
+              <li><a href="/index.html" class="hover:text-primary">Home</a></li>
+              <li>
+                <a href="/listing.html" class="hover:text-primary">Products</a>
+              </li>
+              <li>
+                <a href="/about.html" class="hover:text-primary">About</a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Contact -->
+          <div>
+            <h3 class="font-semibold mb-4">Contact</h3>
+
+            <ul class="space-y-3 text-sm">
+              <li class="flex gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke-width="1.5"
                   stroke="currentColor"
-                  class="size-6"
+                  class="size-4 inline-block"
                 >
                   <path
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M6 6h.008v.008H6V6Z"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
                   />
                 </svg>
-                ToyShop
-              </div>
-            </a>
-            <!-- End Logo -->
+
+                <a class="hover:text-primary" href="tel:+918015443879">
+                  +91 8015443879
+                </a>
+              </li>
+            <li>
+              <li class="flex gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                    </svg>
+
+
+                 <a class="hover:text-primary" href="mailto:info@zilwo.in">
+                  info@zilwo.in
+                </a>
+              </li>
+              
+
+               
+   
+            </ul>
           </div>
-          <!-- End Col -->
 
-          
-              <!-- Social Brands -->
-        <div class="text-center md:text-end space-x-2">
-        <a
-  href="https://wa.me/917012844975"
-  target="_blank"
-  rel="noopener noreferrer"
-  class="size-10 inline-flex justify-center items-center rounded-full text-green-600 hover:text-green-700"
->
-  <svg xmlns="http://www.w3.org/2000/svg"
-       viewBox="0 0 24 24"
-       fill="currentColor"
-       class="size-6">
-    <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.57 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.49-8.43ZM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.37l-.36-.21-3.72.97.99-3.63-.24-.37a9.88 9.88 0 1 1 8.37 4.61Zm5.42-7.39c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.08-.12-.27-.2-.57-.35Z"/>
-  </svg>
-  
+          <!-- Business -->
+          <div>
+            <h3 class="font-semibold mb-4">Business</h3>
 
-  
-</a>
-      
+            <ul class="space-y-3 text-sm">
+              <li>GST Registered</li>
+              <li>GSTIN: 29AVVPV1034F1Z4</li>
+              <li>Trademark No: 7789624</li>
+            </ul>
+
+            <a
+              href="https://wa.me/918015443879"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-lg bg-green-600 text-white hover:bg-green-700 transition"
+            >
+              <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            class="size-6"
+          >
+            <path
+              d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.5 0 .14 5.35.14 11.93c0 2.1.55 4.16 1.6 5.98L0 24l6.27-1.64a11.9 11.9 0 0 0 5.8 1.48h.01c6.57 0 11.93-5.35 11.93-11.93 0-3.19-1.24-6.18-3.49-8.43ZM12.08 21.8h-.01a9.87 9.87 0 0 1-5.03-1.37l-.36-.21-3.72.97.99-3.63-.24-.37a9.88 9.88 0 1 1 8.37 4.61Zm5.42-7.39c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.47-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.14-.14.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.49s1.07 2.88 1.22 3.08c.15.2 2.1 3.2 5.08 4.48.71.31 1.27.49 1.71.63.72.23 1.37.2 1.88.12.57-.08 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.08-.12-.27-.2-.57-.35Z"
+            />
+          </svg>
+              WhatsApp Us
+            </a>
+          </div>
         </div>
-        <!-- End Social Brands -->
+
+        <div
+          class="border-t border-line-2 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-muted-foreground-2"
+        >
+          <p>&copy; 2026 Zilwo. All rights reserved.</p>
+          <p>GST & Trademark Registered</p>
         </div>
-        <!-- End Grid -->
       </div>
     </footer>
     <!-- ========== END FOOTER ========== -->
 
     <!-- JS Implementing Plugins -->
+
+    <!-- Mobile menu toggle (replaces Preline's hs-collapse plugin) -->
+    <script>
+      (function () {
+        const toggleBtn = document.getElementById("mobile-menu-toggle");
+        const menu = document.getElementById("mobile-menu");
+        const iconOpen = document.getElementById("menu-icon-open");
+        const iconClose = document.getElementById("menu-icon-close");
+
+        toggleBtn.addEventListener("click", function () {
+          const isHidden = menu.classList.contains("hidden");
+          if (isHidden) {
+            menu.classList.remove("hidden");
+            toggleBtn.setAttribute("aria-expanded", "true");
+            iconOpen.classList.add("hidden");
+            iconClose.classList.remove("hidden");
+          } else {
+            menu.classList.add("hidden");
+            toggleBtn.setAttribute("aria-expanded", "false");
+            iconOpen.classList.remove("hidden");
+            iconClose.classList.add("hidden");
+          }
+        });
+      })();
+    </script>
 
     <!-- JS PLUGINS -->
     <!-- Required plugins -->

@@ -1,9 +1,5 @@
 
 @import "tailwindcss";
-/* Preline UI */
-@source "./node_modules/preline/dist/*.js";
-/* Plugins */
-@plugin "@tailwindcss/forms";
 
 
 .nav-link {
@@ -11,7 +7,7 @@
   display: inline-block;
 }
 
-.nav-link.active::before {
+.active::before {
   content: "";
   position: absolute;
   left: 0;

@@ -1,11 +1,8 @@
 import "./style.css";
-import "preline";
 import { supabase } from "./supabase.js";
+import { addToCart } from "./cart.js";
 
 
-window.addEventListener("load", () => {
-  window.HSStaticMethods?.autoInit();
-});
 
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
@@ -27,11 +24,29 @@ if (error) {
   document.querySelector("#image").src = toy.toyimage;
   document.querySelector("#category").textContent = toy.category;
 
+  const addToCartBtn = document.querySelector("#add-to-cart");
+ 
+  addToCartBtn.addEventListener("click", () => {
+    addToCart({
+      id: toy.id,
+      productname: toy.productname,
+      price: toy.price,
+      toyimage: toy.toyimage,
+    });
+ 
+    const originalText = addToCartBtn.textContent;
+    addToCartBtn.textContent = "Added to Cart ✓";
+    setTimeout(() => {
+      addToCartBtn.textContent = originalText;
+    }, 1500);
+  });
+
   document.querySelector("#whatsapp").onclick = () => {
-    const message = `Hi! I'm interested in this toy.
+    const message = `Hi! I'm interested in this item.
 
  Product: ${toy.productname}
  Price: ₹${toy.price}
+ Product Link: ${window.location.href}
 
 Is it available?`;
 
