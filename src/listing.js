@@ -1,14 +1,18 @@
-import "./style.css";
 import { supabase } from "./supabase.js";
 import { addToCart } from "./cart.js";
 
 const toyGrid = document.getElementById("toy-grid");
-console.log("listing.js loaded");
 
-let allToys = [];
-
+let toys;
 let toysById = {};
 let searchParams = new URLSearchParams(window.location.search);
+let activePrice = "";
+let activeCategory = "";
+
+const priceBtn = document.getElementById("price-btn");
+const pricePanel = document.getElementById("price-panel");
+const categoryBtn = document.getElementById("category-btn");
+const categoryPanel = document.getElementById("category-panel");
 
 function makeToyCard(toy) {
   return (toyGrid.innerHTML += `
@@ -69,41 +73,42 @@ function makeToyCard(toy) {
       </div>
     `);
 }
-function applySearchFilter() {
-  if (!searchParams.get("q")) {
-    return allToys;
-  }
-  const q = searchParams.get("q")?.toLowerCase() || "";
-  return allToys.filter((toy) => toy.productname.toLowerCase().includes(q));
-}
 
-async function loadToys(limit = null) {
-  let { data, error } = await supabase
+async function loadToys(limit) {
+  const q = searchParams.get("q")?.toLowerCase() || "";
+
+  let query = supabase
     .from("Toy")
     .select("id, productname, price, instock, toyimage")
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false })
+    .limit(limit);
 
+  if (q) {
+    query = query.ilike("productname", `%${q}%`);
+  }
+
+  if (activePrice) {
+    const [minStr, maxStr] = activePrice.split("-");
+    query = query.gte("price", Number(minStr));
+    if (maxStr !== "") {
+      query = query.lte("price", Number(maxStr));
+    }
+  }
+
+  if (activeCategory) {
+    query = query.eq("category", activeCategory);
+  }
+
+  let { data, error } = await query;
   if (error) {
     console.error(error);
-    toyGrid.innerHTML = "<p>Failed to load toys.</p>";
+    toyGrid.innerHTML = "<p>Failed to load.</p>";
     return;
   }
 
-  if (limit) {
-    data = data.slice(0, limit);
-  }
-
-  allToys = data;
-  const searchInput = document.getElementById("search-input");
-  if (searchInput && searchParams.get("q")) {
-    searchInput.value = searchParams.get("q");
-  }
-
-  const toysToRender = applySearchFilter();
-
   toyGrid.innerHTML = "";
 
-  toysToRender.forEach((toy) => {
+  data.forEach((toy) => {
     toysById[toy.id] = toy;
     makeToyCard(toy);
   });
@@ -134,22 +139,6 @@ toyGrid.addEventListener("click", (e) => {
   }, 1200);
 });
 
-document.querySelectorAll("#search-input").forEach((input) => {
-  let timer;
-  input.addEventListener("input", () => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      const q = input.value.trim();
-      if (q.length > 1) {
-        window.location.href = `/listing.html?q=${encodeURIComponent(q)}`;
-      }
-      else if (q.length == 0){
-        window.location.href =  "/listing.html";
-      }
-    }, 500);
-  });
-});
-
 // load top 5 for detail page
 if (
   window.location.pathname.endsWith("index.html") ||
@@ -158,5 +147,50 @@ if (
   loadToys(5);
 }
 if (window.location.pathname.endsWith("listing.html")) {
-  loadToys();
+  loadToys(20);
 }
+
+// toggle panels
+priceBtn?.addEventListener("click", () => {
+  pricePanel.classList.toggle("hidden");
+  categoryPanel.classList.add("hidden");
+});
+categoryBtn?.addEventListener("click", () => {
+  categoryPanel.classList.toggle("hidden");
+  pricePanel.classList.add("hidden");
+});
+
+// close on outside click
+document.addEventListener("click", (e) => {
+  if (!e.target.closest("#price-dropdown")) pricePanel?.classList.add("hidden");
+  if (!e.target.closest("#category-dropdown"))
+    categoryPanel?.classList.add("hidden");
+});
+
+// price options
+document.querySelectorAll(".price-opt").forEach((opt) => {
+  opt.addEventListener("click", () => {
+    activePrice = opt.dataset.price;
+    priceBtn.childNodes[0].textContent = opt.textContent.trim();
+    document
+      .querySelectorAll(".price-opt")
+      .forEach((o) => o.classList.remove("bg-gray-50", "font-medium"));
+    opt.classList.add("bg-gray-50", "font-medium");
+    pricePanel.classList.add("hidden");
+    loadToys(20);
+  });
+});
+
+// category options
+document.querySelectorAll(".category-opt").forEach((opt) => {
+  opt.addEventListener("click", () => {
+    activeCategory = opt.dataset.category;
+    categoryBtn.childNodes[0].textContent = opt.textContent.trim();
+    document
+      .querySelectorAll(".category-opt")
+      .forEach((o) => o.classList.remove("bg-gray-50", "font-medium"));
+    opt.classList.add("bg-gray-50", "font-medium");
+    categoryPanel.classList.add("hidden");
+    loadToys(20);
+  });
+});

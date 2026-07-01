@@ -40,6 +40,7 @@
       })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script type="module" src="src/main.js"></script>
   </head>
 
   <body class="bg-background">
@@ -91,7 +92,7 @@
             <button
               type="button"
               id="mobile-menu-toggle"
-              class="size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl  border border-layer-line text-layer-foreground hover:-hover focus:outline-hidden focus:-focus disabled:opacity-50 disabled:pointer-events-none"
+              class="size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl border border-layer-line text-layer-foreground hover:-hover focus:outline-hidden focus:-focus disabled:opacity-50 disabled:pointer-events-none"
               aria-expanded="false"
               aria-controls="mobile-menu"
               aria-label="Toggle navigation"
@@ -135,14 +136,26 @@
           <div
             class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3"
           >
-            <form
-              id="nav-search"
-              action="/listing.html"
-              method="get"
-              class="relative hidden lg:block"
+          <form
+            id="nav-search"
+            action="/listing.html"
+            method="get"
+            class="hidden lg:flex"
+          >
+            <input
+              type="text"
+              id="input-search"
+              name="q"
+              placeholder="Search Products"
+              class="pl-4 pr-4 py-2 rounded-l-xl border border-r-0 text-sm focus:outline-none transition "
+            />
+
+            <button
+              type="submit"
+              class="inline-flex items-center gap-1.5 px-3 py-2 rounded-r-xl border text-sm transition hover:opacity-80"
             >
               <svg
-                class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
+                class="size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -154,18 +167,13 @@
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
-              <input
-                type="text"
-                id="input-search"
-                name="q"
-                placeholder="Search Products"
-                class="pl-9 pr-4 py-2 rounded-xl border   text-sm  "
-              />
-            </form>
+              
+            </button>
+          </form>
 
             <a
               href="/cart.html"
-              class="size-9.5 relative flex justify-center items-center rounded-xl  border border-layer-line text-layer-foreground hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus"
+              class="size-9.5 relative flex justify-center items-center rounded-xl border border-layer-line text-layer-foreground hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus"
             >
               <span class="sr-only">Cart</span>
               <svg
@@ -214,30 +222,39 @@
         <!-- End Collapse -->
       </nav>
       <div class="lg:hidden w-full px-4 pb-4">
-        <form action="/listing.html" method="get" class="relative">
-          <svg
-            class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
+       <form action="/listing.html" method="get" class="relative flex m-8">
           <input
             type="text"
             id="search-input"
             name="q"
             placeholder="Search Products..."
-            class="w-full pl-9 pr-4 py-2.5 rounded-xl border  text-sm   focus:outline-none focus:ring-2 focus:ring-primary/30 transition"
+            class="w-full pl-4 pr-4 py-2.5 rounded-l-xl border text-sm focus:outline-none transition border-r-0"
           />
+
+          <button
+            type="submit"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-r-xl border text-sm transition hover:opacity-80"
+          >
+            <svg
+              class="size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
         </form>
       </div>
     </header>
+
+
+    
     <!-- ========== END HEADER ========== -->
 
     <!-- ========== MAIN CONTENT ========== -->
@@ -291,7 +308,7 @@
       <!-- Listing -->
       <div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
         <div class="mb-6 sm:mb-10 max-w-2xl text-center mx-auto">
-          <h1 class="font-medium  text-3xl sm:text-4xl">
+          <h1 class="font-medium text-3xl sm:text-4xl">
             New items in our collection
           </h1>
         </div>
@@ -305,7 +322,7 @@
 
         <div class="mt-10 lg:mt-20 text-center">
           <a
-            class="active relative inline-block font-medium md:text-lg  before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-secondary-hover focus:outline-hidden focus:before:bg-secondary-focus"
+            class="active relative inline-block font-medium md:text-lg before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-secondary-hover focus:outline-hidden focus:before:bg-secondary-focus"
             href="/listing.html"
           >
             View all Products
@@ -321,9 +338,7 @@
           >
             Why Choose Zilwo
           </span>
-          <h2
-            class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight "
-          >
+          <h2 class="mt-4 text-3xl md:text-4xl font-semibold tracking-tight">
             Collect With Confidence
           </h2>
           <p class="mt-4 text-muted-foreground">
@@ -337,9 +352,7 @@
           class="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8"
         >
           <!-- Card -->
-          <div
-            class="rounded-3xl border   p-8 hover: transition"
-          >
+          <div class="rounded-3xl border p-8 hover: transition">
             <div
               class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
             >
@@ -360,9 +373,7 @@
                 />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold ">
-              Authentic Products
-            </h3>
+            <h3 class="text-lg font-semibold">Authentic Products</h3>
             <p class="mt-3 text-sm text-muted-foreground leading-6">
               Every collectible is carefully selected for quality, authenticity,
               and attention to detail.
@@ -370,9 +381,7 @@
           </div>
 
           <!-- Card -->
-          <div
-            class="rounded-3xl border   p-8 hover: transition"
-          >
+          <div class="rounded-3xl border p-8 hover: transition">
             <div
               class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
             >
@@ -394,9 +403,7 @@
                 <circle cx="17.5" cy="17.5" r="2.5" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold ">
-              Shipping Across India
-            </h3>
+            <h3 class="text-lg font-semibold">Shipping Across India</h3>
             <p class="mt-3 text-sm text-muted-foreground leading-6">
               Secure packaging and reliable delivery so your collectibles arrive
               safely.
@@ -404,9 +411,7 @@
           </div>
 
           <!-- Card -->
-          <div
-            class="rounded-3xl border   p-8 hover: transition"
-          >
+          <div class="rounded-3xl border p-8 hover: transition">
             <div
               class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
             >
@@ -421,9 +426,7 @@
                 />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold ">
-              WhatsApp Ordering
-            </h3>
+            <h3 class="text-lg font-semibold">WhatsApp Ordering</h3>
             <p class="mt-3 text-sm text-muted-foreground leading-6">
               Place your order quickly and easily through WhatsApp with direct
               assistance.
@@ -431,9 +434,7 @@
           </div>
 
           <!-- Card -->
-          <div
-            class="rounded-3xl border   p-8 hover: transition"
-          >
+          <div class="rounded-3xl border p-8 hover: transition">
             <div
               class="size-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
             >
@@ -452,7 +453,7 @@
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z" />
               </svg>
             </div>
-            <h3 class="text-lg font-semibold ">
+            <h3 class="text-lg font-semibold">
               GST &amp; Trademark Registered
             </h3>
             <p class="mt-3 text-sm text-muted-foreground leading-6">
@@ -470,7 +471,7 @@
         <div class="px-4 sm:px-6 lg:px-8">
           <!-- Grid -->
           <div class="grid grid-cols-1 md:grid-cols-2 md:items-center">
-            <div class="relative h-80 md:h-150  rounded-2xl">
+            <div class="relative h-80 md:h-150 rounded-2xl">
               <img
                 class="absolute inset-0 size-full object-cover rounded-2xl"
                 src="https://images.unsplash.com/photo-1597422232698-1a27a1289cea?auto=format&fit=crop&w=1200&q=80"
@@ -481,11 +482,9 @@
 
             <div class="pt-10 md:p-10">
               <blockquote class="max-w-4xl mx-auto">
-                <p class="mb-6 md:text-lg ">About Our Store</p>
+                <p class="mb-6 md:text-lg">About Our Store</p>
 
-                <p
-                  class="text-xl sm:text-2xl lg:text-3xl lg:leading-normal "
-                >
+                <p class="text-xl sm:text-2xl lg:text-3xl lg:leading-normal">
                   Zilwo was founded to make premium action figures and
                   collectibles available to fans everywhere. We focus on
                   offering products that are carefully selected for their
@@ -496,7 +495,7 @@
                 <footer class="mt-6 md:mt-10">
                   <a
                     href="/listing.html"
-                    class="group inline-flex items-center gap-x-3  text-sm focus:outline-hidden"
+                    class="group inline-flex items-center gap-x-3 text-sm focus:outline-hidden"
                   >
                     <span
                       class="size-8 md:size-10 flex flex-col justify-center items-center bg-secondary border border-secondary-line text-secondary-foreground rounded-full group-hover:scale-105 group-focus:scale-105 transition-transform duration-300 ease-in-out"
@@ -535,9 +534,7 @@
       <!-- Contact -->
       <div class="max-w-7xl px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
         <div class="mb-6 sm:mb-10 max-w-2xl text-center mx-auto">
-          <h2 class="font-medium  text-2xl sm:text-4xl">
-            Contact Us
-          </h2>
+          <h2 class="font-medium text-2xl sm:text-4xl">Contact Us</h2>
         </div>
 
         <div
@@ -547,7 +544,7 @@
 
           <div class="space-y-8 lg:space-y-16">
             <div>
-              <h3 class="mb-5 font-semibold ">Our address</h3>
+              <h3 class="mb-5 font-semibold">Our address</h3>
 
               <!-- Grid -->
               <div
@@ -574,9 +571,7 @@
 
                   <div class="grow">
                     <p class="text-sm text-muted-foreground-2">XYZ</p>
-                    <address class="mt-1  not-italic">
-                      Address<br />
-                    </address>
+                    <address class="mt-1 not-italic">Address<br /></address>
                   </div>
                 </div>
               </div>
@@ -584,7 +579,7 @@
             </div>
 
             <div>
-              <h3 class="mb-5 font-semibold ">Our contacts</h3>
+              <h3 class="mb-5 font-semibold">Our contacts</h3>
 
               <!-- Grid -->
               <div
@@ -615,7 +610,7 @@
                     <p class="text-sm text-muted-foreground-2">Email us</p>
                     <p>
                       <a
-                        class="active relative inline-block font-medium  before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
+                        class="active relative inline-block font-medium before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
                         href="mailto:info@zilwo.in"
                       >
                         info@zilwo.in
@@ -646,7 +641,7 @@
                     <p class="text-sm text-muted-foreground-2">Call us</p>
                     <p>
                       <a
-                        class="active relative inline-block font-medium  before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
+                        class="active relative inline-block font-medium before:absolute before:bottom-0.5 before:inset-s-0 before:-z-1 before:w-full before:h-1 before:bg-primary hover:before:bg-primary-hover focus:outline-hidden focus:before:bg-primary-focus"
                         href="tel:+918015443879"
                       >
                         +91 8015443879
@@ -766,7 +761,7 @@
                 </a>
               </li>
 
-             <li class="flex gap-2">
+              <li class="flex gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -879,8 +874,6 @@
     </script>
 
     <!-- JS PLUGINS -->
-    <!-- Required plugins -->
-    <script type="module" src="/src/main.js"></script>
     <script type="module" src="/src/listing.js"></script>
   </body>
 </html>

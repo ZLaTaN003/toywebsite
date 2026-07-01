@@ -33,6 +33,8 @@
       })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+        <script type="module" src="src/main.js" ></script>
+
   </head>
   <body class="bg-background">
     <header
@@ -78,13 +80,25 @@
           class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3"
         >
          <form
-              id="nav-search"
-              action="/listing.html"
-              method="get"
-              class="relative hidden lg:block"
+            id="nav-search"
+            action="/listing.html"
+            method="get"
+            class="hidden lg:flex"
+          >
+            <input
+              type="text"
+              id="input-search"
+              name="q"
+              placeholder="Search Products"
+              class="pl-4 pr-4 py-2 rounded-l-xl border border-r-0 text-sm focus:outline-none transition "
+            />
+
+            <button
+              type="submit"
+              class="inline-flex items-center gap-1.5 px-3 py-2 rounded-r-xl border text-sm transition hover:opacity-80"
             >
               <svg
-                class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
+                class="size-4"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="none"
@@ -96,14 +110,9 @@
                 <circle cx="11" cy="11" r="8" />
                 <path d="m21 21-4.3-4.3" />
               </svg>
-              <input
-                type="text"
-                id="input-search"
-                name="q"
-                placeholder="Search Products"
-                class="pl-9 pr-4 py-2 rounded-xl border   text-sm  "
-              />
-            </form>
+              
+            </button>
+          </form>
 
           <a
             href="/cart.html"
@@ -197,27 +206,33 @@
         </div>
         <!-- End Collapse -->
              <div class="lg:hidden w-full px-4 pb-4">
-        <form action="/listing.html" method="get" class="relative">
-          <svg
-            class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-          >
-            <circle cx="11" cy="11" r="8" />
-            <path d="m21 21-4.3-4.3" />
-          </svg>
+     <form action="/listing.html" method="get" class="relative flex m-8">
           <input
             type="text"
             id="search-input"
             name="q"
             placeholder="Search Products..."
-            class="w-full pl-9 pr-4 py-2.5 rounded-xl border  text-sm   focus:outline-none focus:ring-2 focus:ring-primary/30 transition"
+            class="w-full pl-4 pr-4 py-2.5 rounded-l-xl border text-sm focus:outline-none transition border-r-0"
           />
+
+          <button
+            type="submit"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-r-xl border text-sm transition hover:opacity-80"
+          >
+            <svg
+              class="size-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </button>
         </form>
       </div>
       </nav>
@@ -347,8 +362,7 @@
           <!-- Contact -->
           <div>
             <h3 class="font-semibold mb-4">Contact</h3>
-
-            <ul class="space-y-3 text-sm">
+  <ul class="space-y-3 text-sm">
               <li class="flex gap-2">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -369,21 +383,69 @@
                   +91 8015443879
                 </a>
               </li>
-            <li>
+
               <li class="flex gap-2">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-4">
-                      <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
-                    </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 inline-block"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                  />
+                </svg>
 
+                <a class="hover:text-primary" href="tel:+918056189764">
+                  +91 8056189764
+                </a>
+              </li>
 
-                 <a class="hover:text-primary" href="mailto:info@zilwo.in">
+              <li class="flex gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4 inline-block"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
+                  />
+                </svg>
+
+                <a class="hover:text-primary" href="tel:+917352072078">
+                  +91 7352072078
+                </a>
+              </li>
+
+              <li class="flex gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="size-4"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
+                  />
+                </svg>
+
+                <a class="hover:text-primary" href="mailto:info@zilwo.in">
                   info@zilwo.in
                 </a>
               </li>
-              
-
-               
-   
             </ul>
           </div>
 
@@ -446,7 +508,7 @@
           } else {
             menu.classList.add("hidden");
             toggleBtn.setAttribute("aria-expanded", "false");
-            iconOpen.classList.remove("hidden");
+          iconOpen.classList.remove("hidden");
             iconClose.classList.add("hidden");
           }
         });
