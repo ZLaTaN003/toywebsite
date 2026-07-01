@@ -5,30 +5,13 @@ import { addToCart } from "./cart.js";
 const toyGrid = document.getElementById("toy-grid");
 console.log("listing.js loaded");
 
+let allToys = [];
+
 let toysById = {};
+let searchParams = new URLSearchParams(window.location.search);
 
-async function loadToys(limit = null) {
-  let { data, error } = await supabase
-    .from("Toy")
-    .select("id, productname, price, instock, toyimage")
-    .order("created_at", { ascending: false });
-
-  if (error) {
-    console.error(error);
-    toyGrid.innerHTML = "<p>Failed to load toys.</p>";
-    return;
-  }
-
-  if (limit) {
-    data = data.slice(0, limit);
-  }
-
-  toyGrid.innerHTML = "";
-
-  data.forEach((toy) => {
-    toysById[toy.id] = toy;
-
-    toyGrid.innerHTML += `
+function makeToyCard(toy) {
+  return (toyGrid.innerHTML += `
       <div class="group flex flex-col">
         <div class="relative">
 
@@ -84,7 +67,45 @@ async function loadToys(limit = null) {
           </button>
         </div>
       </div>
-    `;
+    `);
+}
+function applySearchFilter() {
+  if (!searchParams.get("q")) {
+    return allToys;
+  }
+  const q = searchParams.get("q")?.toLowerCase() || "";
+  return allToys.filter((toy) => toy.productname.toLowerCase().includes(q));
+}
+
+async function loadToys(limit = null) {
+  let { data, error } = await supabase
+    .from("Toy")
+    .select("id, productname, price, instock, toyimage")
+    .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    toyGrid.innerHTML = "<p>Failed to load toys.</p>";
+    return;
+  }
+
+  if (limit) {
+    data = data.slice(0, limit);
+  }
+
+  allToys = data;
+  const searchInput = document.getElementById("search-input");
+  if (searchInput && searchParams.get("q")) {
+    searchInput.value = searchParams.get("q");
+  }
+
+  const toysToRender = applySearchFilter();
+
+  toyGrid.innerHTML = "";
+
+  toysToRender.forEach((toy) => {
+    toysById[toy.id] = toy;
+    makeToyCard(toy);
   });
 
   console.log("Toys loaded:", data);
@@ -113,11 +134,29 @@ toyGrid.addEventListener("click", (e) => {
   }, 1200);
 });
 
+document.querySelectorAll("#search-input").forEach((input) => {
+  let timer;
+  input.addEventListener("input", () => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      const q = input.value.trim();
+      if (q.length > 1) {
+        window.location.href = `/listing.html?q=${encodeURIComponent(q)}`;
+      }
+      else if (q.length == 0){
+        window.location.href =  "/listing.html";
+      }
+    }, 500);
+  });
+});
+
 // load top 5 for detail page
-if (window.location.pathname.endsWith("index.html") || window.location.pathname === "/") {
+if (
+  window.location.pathname.endsWith("index.html") ||
+  window.location.pathname === "/"
+) {
   loadToys(5);
 }
 if (window.location.pathname.endsWith("listing.html")) {
-    loadToys();
-
+  loadToys();
 }

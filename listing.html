@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Listings</title>
+  <title>Products</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
@@ -27,7 +27,7 @@
 
 </head>
 <body>
-   <header class="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full py-7 bg-navbar">
+   <header class="flex flex-wrap lg:justify-start lg:flex-nowrap z-50 w-full py-7">
     <nav class="relative max-w-7xl w-full flex flex-wrap lg:grid lg:grid-cols-12 basis-full items-center px-4 md:px-6 lg:px-8 mx-auto">
       <div class="lg:col-span-3 flex ">
         <!-- Logo -->
@@ -47,9 +47,37 @@ Zilwo
 
       <!-- Button Group -->
       <div class="flex items-center gap-x-1 lg:gap-x-2 ms-auto py-1 lg:ps-6 lg:order-3 lg:col-span-3">
+
+          <form
+              id="nav-search"
+              action="/listing.html"
+              method="get"
+              class="relative hidden lg:block"
+            >
+              <svg
+                class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="11" cy="11" r="8" />
+                <path d="m21 21-4.3-4.3" />
+              </svg>
+              <input
+                type="text"
+                id="search-input"
+                name="q"
+                placeholder="Search Products"
+                class="pl-9 pr-4 py-2 rounded-xl border   text-sm  "
+              />
+            </form>
                 <a
           href="/cart.html"
-          class="size-9.5 relative flex justify-center items-center rounded-xl bg-layer border border-layer-line text-layer-foreground hover:bg-muted-hover focus:outline-hidden focus:bg-muted-focus"
+          class="size-9.5 relative flex justify-center items-center rounded-xl  border   focus:outline-hidden focus:bg-muted-focus"
         >
           <span class="sr-only">Cart</span>
           <svg class="shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -66,7 +94,7 @@ Zilwo
         <div class="lg:hidden">
           <button type="button"
             id="mobile-menu-toggle"
-            class="size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl bg-layer border border-layer-line text-layer-foreground hover:bg-layer-hover focus:outline-hidden focus:bg-layer-focus disabled:opacity-50 disabled:pointer-events-none"
+            class="size-9.5 flex justify-center items-center text-sm font-semibold rounded-xl  border  hover:-hover focus:outline-hidden focus:-focus disabled:opacity-50 disabled:pointer-events-none"
             aria-expanded="false"
             aria-controls="mobile-menu"
             aria-label="Toggle navigation">
@@ -89,13 +117,37 @@ Zilwo
         <div class="flex flex-col gap-y-4 gap-x-0 mt-5 lg:flex-row lg:justify-center lg:items-center lg:gap-y-0 lg:gap-x-7 lg:mt-0">
         <a class="nav-link" href="/index.html">Home</a>
 
-          <a class="nav-link active" href="/listing.html">Listings</a>
+          <a class="nav-link active" href="/listing.html">Products</a>
 
 
         </div>
       </div>
       <!-- End Collapse -->
     </nav>
+    <div class="lg:hidden w-full px-4 pb-4">
+        <form action="/listing.html" method="get" class="relative">
+          <svg
+            class="absolute left-3 top-1/2 -translate-y-1/2 shrink-0 size-4 text-muted-foreground pointer-events-none"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <circle cx="11" cy="11" r="8" />
+            <path d="m21 21-4.3-4.3" />
+          </svg>
+          <input
+            type="text"
+            id="search-input"
+            name="q"
+            placeholder="Search Products..."
+            class="w-full pl-9 pr-4 py-2.5 rounded-xl border  text-sm   focus:outline-none focus:ring-2 focus:ring-primary/30 transition"
+          />
+        </form>
+      </div>
   </header>
 <!-- Listings -->
     <div class="max-w-340 px-4 sm:px-6 lg:px-8 py-12 lg:py-24 mx-auto">
@@ -105,7 +157,7 @@ Zilwo
   <!-- End Card Grid -->
 </div>
 <!-- End Listings -->
-    <footer class="border-t border-line-2 mt-16">
+    <footer class="border-t mt-16">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <!-- Brand -->
@@ -137,7 +189,7 @@ Zilwo
               Zilwo
             </a>
 
-            <p class="mt-4 text-sm text-muted-foreground-2 leading-6">
+            <p class="mt-4 text-sm  leading-6">
               Premium action figures and collectibles carefully selected for
               quality, attention to detail and authenticity.
             </p>
@@ -233,7 +285,7 @@ Zilwo
         </div>
 
         <div
-          class="border-t border-line-2 mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm text-muted-foreground-2"
+          class="border-t mt-10 pt-6 flex flex-col md:flex-row justify-between gap-4 text-sm "
         >
           <p>© 2026 Zilwo. All rights reserved.</p>
 

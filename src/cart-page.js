@@ -41,9 +41,9 @@ function renderCart() {
 
           <div class="mt-3 flex items-center gap-3">
             <div class="inline-flex items-center rounded-xl border border-line">
-              <button type="button" class="qty-decrease size-8 flex items-center justify-center text-lg leading-none hover:bg-layer rounded-l-xl">−</button>
+              <button type="button" class="qty-decrease size-8 flex items-center justify-center text-lg leading-none rounded-l-xl">−</button>
               <span class="w-8 text-center text-sm">${item.qty}</span>
-              <button type="button" class="qty-increase size-8 flex items-center justify-center text-lg leading-none hover:bg-layer rounded-r-xl">+</button>
+              <button type="button" class="qty-increase size-8 flex items-center justify-center text-lg leading-none rounded-r-xl">+</button>
             </div>
 
             <button type="button" class="remove-item text-sm text-red-600 hover:text-red-700">
